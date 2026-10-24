@@ -1,5 +1,7 @@
 # haggle-agent
 
+[![CI](https://github.com/eliem08/haggle-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/eliem08/haggle-agent/actions/workflows/ci.yml)
+
 > **Honey that haggles for you** — your agent negotiates the price.
 
 Honey finds coupons. `haggle-agent` goes further: it negotiates. With a
@@ -37,3 +39,25 @@ haggle-agent tournament --list 1200 --target 850 --walkaway 1000
 - Channels: email (pairs with agent-telco for SMS), marketplace chat, live seller bots
 - Learned seller models from past negotiations (reserve estimation)
 - Guardrails: never misrepresent facts; every leverage claim must be verifiable
+
+## Development
+
+Zero runtime dependencies; Python 3.10+.
+
+```bash
+python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
+pip install -e ".[dev]"
+python -m unittest discover -s tests -t .           # unit + CLI smoke tests
+ruff check . && ruff format --check .               # lint + format
+```
+
+```
+haggle_agent/core.py       domain logic (pure, importable, fully tested)
+haggle_agent/__main__.py   CLI (`haggle-agent ...` / `python -m haggle_agent ...`)
+tests/                unit tests + generated CLI smoke tests
+```
+
+CI runs lint and tests on Ubuntu and Windows across Python 3.10, 3.12 and 3.13.
+Design, data model, trade-offs and production path: **[ARCHITECTURE.md](ARCHITECTURE.md)**.
+
+Part of the [agent-economy](https://github.com/eliem08/agent-economy) portfolio (idea #37).

@@ -1,4 +1,5 @@
 """Negotiation strategies, acceptance rules, messages and a seller simulator."""
+
 from __future__ import annotations
 
 import itertools
@@ -65,7 +66,9 @@ class Buyer:
         if rnd == 0:
             return f"Thanks for the quote. I'm ready to move forward today at ${price:,.0f}: {reason}."
         if rnd >= self.b.rounds - 1:
-            return f"This is my final offer: ${price:,.0f}. {reason[0].upper() + reason[1:]}. If that works, I'll pay now."
+            return (
+                f"This is my final offer: ${price:,.0f}. {reason[0].upper() + reason[1:]}. If that works, I'll pay now."
+            )
         return f"I hear you. I can come up to ${price:,.0f}; {reason}."
 
 
@@ -88,7 +91,9 @@ class Seller:
         return self.list_price - (self.list_price - self.reserve) * (t ** (1 / self.e))
 
 
-def simulate(brief: Brief, seller_reserve: float, strategy: str = "boulware", seller_e: float = 0.5, verbose=False) -> dict:
+def simulate(
+    brief: Brief, seller_reserve: float, strategy: str = "boulware", seller_e: float = 0.5, verbose=False
+) -> dict:
     buyer = Buyer(brief, strategy)
     seller = Seller(brief.list_price, seller_reserve, brief.rounds, seller_e)
     transcript = []
@@ -105,10 +110,15 @@ def simulate(brief: Brief, seller_reserve: float, strategy: str = "boulware", se
 
 
 def _result(brief, outcome, price, rounds, transcript, how):
-    return {"outcome": outcome, "price": price, "rounds": rounds, "how": how,
-            "savings": round(brief.list_price - price, 2) if price else 0.0,
-            "savings_pct": round((brief.list_price - price) / brief.list_price, 4) if price else 0.0,
-            "transcript": transcript}
+    return {
+        "outcome": outcome,
+        "price": price,
+        "rounds": rounds,
+        "how": how,
+        "savings": round(brief.list_price - price, 2) if price else 0.0,
+        "savings_pct": round((brief.list_price - price) / brief.list_price, 4) if price else 0.0,
+        "transcript": transcript,
+    }
 
 
 def tournament(brief: Brief, reserves=(0.70, 0.78, 0.85), seller_es=(0.3, 1.0, 2.5)) -> list[dict]:
@@ -120,5 +130,7 @@ def tournament(brief: Brief, reserves=(0.70, 0.78, 0.85), seller_es=(0.3, 1.0, 2
             res = simulate(brief, brief.list_price * r, strat, e)
             deals += res["outcome"] == "deal"
             saved += res["savings"]
-        rows.append({"strategy": strat, "deal_rate": round(deals / len(cases), 3), "avg_savings": round(saved / len(cases), 2)})
+        rows.append(
+            {"strategy": strat, "deal_rate": round(deals / len(cases), 3), "avg_savings": round(saved / len(cases), 2)}
+        )
     return sorted(rows, key=lambda r: -r["avg_savings"])

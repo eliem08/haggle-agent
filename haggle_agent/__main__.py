@@ -30,9 +30,11 @@ def main(argv=None):
         if turn[0] == "seller":
             print(f"  seller asks  ${turn[1]:,.2f}")
         else:
-            print(f"  we offer     ${turn[1]:,.2f}   \"{turn[2]}\"")
+            print(f'  we offer     ${turn[1]:,.2f}   "{turn[2]}"')
     if res["outcome"] == "deal":
-        print(f"DEAL at ${res['price']:,.2f} in {res['rounds']} rounds ({res['how']}); saved ${res['savings']:,.2f} ({res['savings_pct']:.1%})")
+        print(
+            f"DEAL at ${res['price']:,.2f} in {res['rounds']} rounds ({res['how']}); saved ${res['savings']:,.2f} ({res['savings_pct']:.1%})"
+        )
     else:
         print("NO DEAL - walked away at the deadline")
     return 0
