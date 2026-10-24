@@ -20,8 +20,9 @@ class Tests(unittest.TestCase):
 
     def test_boulware_holds_firmer_than_conceder(self):
         bw, cc = Buyer(B, "boulware"), Buyer(B, "conceder")
-        self.assertLess(bw.offer(3, []) if [bw.offer(r, []) for r in range(3)] else 0,
-                        cc.offer(3, []) if [cc.offer(r, []) for r in range(3)] else 0)
+        bw_offers = [bw.offer(r, []) for r in range(4)]
+        cc_offers = [cc.offer(r, []) for r in range(4)]
+        self.assertLess(bw_offers[3], cc_offers[3])
 
     def test_deal_within_zopa(self):
         res = simulate(B, seller_reserve=900)
