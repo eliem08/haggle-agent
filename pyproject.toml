@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "haggle-agent"
+version = "0.1.0"
+description = "Honey that haggles for you: your agent negotiates the price"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = []
+
+[project.scripts]
+haggle-agent = "haggle_agent.__main__:main"
+
+[tool.setuptools]
+packages = ["haggle_agent"]
