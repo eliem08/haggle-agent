@@ -5,16 +5,17 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "haggle-agent"
 version = "0.1.0"
-description = "Honey that haggles for you: your agent negotiates the price"
+description = "An agent that negotiates the price for you."
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "MIT" }
+license = { text = "Proprietary" }
 authors = [{ name = "eliem08" }]
 dependencies = []
 classifiers = [
   "Programming Language :: Python :: 3",
-  "License :: OSI Approved :: MIT License",
+  "License :: Other/Proprietary License",
   "Operating System :: OS Independent",
+  "Private :: Do Not Upload",
 ]
 
 [project.optional-dependencies]

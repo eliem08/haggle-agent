@@ -1,4 +1,4 @@
-"""Honey that haggles for you: your agent negotiates the price."""
+"""Haggle Agent: An agent that negotiates the price for you."""
 
 from .core import *
 
