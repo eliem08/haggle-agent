@@ -46,7 +46,7 @@ Every plan starts with a 14-day free trial. Prices in USD, billed monthly unless
 | **Procurement** | $299 per month | Team seats; Custom walk-away rules; Savings reports |
 | **API** | Custom (% of savings, contact sales) | Embed negotiation in your app; Pay only on savings |
 
-To start a trial or buy a plan, email **sales@YOUR-DOMAIN.com**.
+To start a trial or buy a plan, [request access](https://github.com/eliem08/haggle-agent/issues/new?title=Haggle%20Agent%20trial&labels=sales).
 
 ## Licence
 
