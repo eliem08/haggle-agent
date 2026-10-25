@@ -9,6 +9,13 @@ class Tests(unittest.TestCase):
     def test_brief_validation(self):
         with self.assertRaises(ValueError):
             Brief(1000, 900, 800)
+        for args, kw in (((0, 0, 0), {}), ((1000, -5, 800), {}), ((1000, 700, 800), {"rounds": 0})):
+            with self.subTest(args=args, kw=kw), self.assertRaises(ValueError):
+                Brief(*args, **kw)
+        b = Brief(1000, 700, 800)
+        for reserve, e in ((1500, 0.5), (0, 0.5), (750, 0)):
+            with self.subTest(reserve=reserve, e=e), self.assertRaises(ValueError):
+                simulate(b, reserve, seller_e=e)
 
     def test_offers_monotonic_and_capped(self):
         for strat in ("boulware", "linear", "conceder"):

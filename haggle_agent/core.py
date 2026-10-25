@@ -19,8 +19,10 @@ class Brief:
     leverage: list = field(default_factory=list)
 
     def __post_init__(self):
-        if not self.target <= self.walkaway <= self.list_price:
-            raise ValueError("need target <= walkaway <= list_price")
+        if not 0 < self.target <= self.walkaway <= self.list_price:
+            raise ValueError("need 0 < target <= walkaway <= list_price")
+        if self.rounds < 1:
+            raise ValueError("need at least 1 round")
 
 
 def _curve(start: float, end: float, t: float, e: float) -> float:
@@ -94,6 +96,10 @@ class Seller:
 def simulate(
     brief: Brief, seller_reserve: float, strategy: str = "boulware", seller_e: float = 0.5, verbose=False
 ) -> dict:
+    if not 0 < seller_reserve <= brief.list_price:
+        raise ValueError("need 0 < seller reserve <= list_price")
+    if seller_e <= 0:
+        raise ValueError("seller concession exponent must be > 0")
     buyer = Buyer(brief, strategy)
     seller = Seller(brief.list_price, seller_reserve, brief.rounds, seller_e)
     transcript = []
