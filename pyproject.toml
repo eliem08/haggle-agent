@@ -23,6 +23,7 @@ dev = ["ruff>=0.6"]
 
 [project.scripts]
 haggle-agent = "haggle_agent.__main__:main"
+haggle-agent-web = "haggle_agent.web:main"
 
 [project.urls]
 Repository = "https://github.com/eliem08/haggle-agent"

@@ -18,7 +18,7 @@ def _finite_float(s: str) -> float:
 LEVERAGE = ["a competitor quoted me lower last week", "I can pay in full upfront", "I'm buying two more next quarter"]
 
 
-def _run(argv=None):
+def build_parser():
     ap = argparse.ArgumentParser(prog="haggle-agent")
     sub = ap.add_subparsers(dest="cmd", required=True)
     for name in ("simulate", "tournament"):
@@ -31,6 +31,11 @@ def _run(argv=None):
             p.add_argument("--seller-reserve", type=_finite_float, required=True)
             p.add_argument("--seller-e", type=_finite_float, default=0.5)
             p.add_argument("--strategy", choices=sorted(STRATEGIES), default="boulware")
+    return ap
+
+
+def _run(argv=None):
+    ap = build_parser()
     a = ap.parse_args(argv)
     brief = Brief(a.list_price, a.target, a.walkaway, a.rounds, LEVERAGE)
     if a.cmd == "tournament":

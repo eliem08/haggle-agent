@@ -1,0 +1,23 @@
+[
+ {
+  "op": "simulate",
+  "payload": {
+   "list_price": 1200.0,
+   "target": 850.0,
+   "walkaway": 1000.0,
+   "rounds": 8,
+   "seller_reserve": 900.0,
+   "seller_e": 0.5,
+   "strategy": "boulware"
+  }
+ },
+ {
+  "op": "tournament",
+  "payload": {
+   "list_price": 1200.0,
+   "target": 850.0,
+   "walkaway": 1000.0,
+   "rounds": 8
+  }
+ }
+]

@@ -21,6 +21,18 @@ haggle-agent simulate --list 1200 --target 850 --walkaway 1000 --seller-reserve 
 haggle-agent tournament --list 1200 --target 850 --walkaway 1000
 ```
 
+## Web app and API
+
+Every command is also a JSON API endpoint and a browser form, served by the built-in web app.
+
+```bash
+haggle-agent-web --port 8000          # then open http://127.0.0.1:8000
+docker build -t haggle-agent . && docker run -p 8000:8000 -v haggle-agent-data:/data haggle-agent
+```
+
+Endpoints: `POST /api/simulate`, `POST /api/tournament`, plus `GET /healthz` and `GET /api/spec` (machine-readable field list).
+Files are sent as `{"name": ..., "content": ...}`, folders as `{"files": [...]}` or a base64 zip.
+
 ## Pricing
 
 Every plan starts with a 14-day free trial. Prices in USD, billed monthly unless noted.
