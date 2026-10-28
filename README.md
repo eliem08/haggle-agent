@@ -47,20 +47,22 @@ To sell self-serve, set four variables and point a Stripe webhook at `https://<y
 |---|---|
 | `STRIPE_SECRET_KEY` | `sk_live_...` |
 | `STRIPE_WEBHOOK_SECRET` | `whsec_...` |
-| `STRIPE_PRICES` | `team=price_123,business=price_456` |
+| `STRIPE_PRICES` | `shopper=price_123,procurement=price_456` |
 | `PUBLIC_URL` | `https://haggle-agent.example.com` |
 
-Buyers pick a plan on `/pricing`, pay on Stripe Checkout and see their API key once on the success page. Cancelling the subscription revokes the key. A selling server always requires a key.
+Buyers pick a plan on `/pricing`, pay on Stripe Checkout and see their API key once on the success page. Cancelling the subscription revokes the key. A selling server always requires a key. The API plan is contact-sales only (a percentage of savings cannot be a fixed Stripe price) and must not be added to `STRIPE_PRICES`. Copy `.env.example` to `.env` and fill in real values; never commit `.env`.
 
 ## Pricing
 
-Every plan starts with a 14-day free trial. Prices in USD, billed monthly unless noted.
+Monthly plans start with a 14-day free trial. Prices in USD, billed monthly unless noted.
 
 | Plan | Price | Includes |
 |---|---|---|
 | **Shopper** | $9 per month | Unlimited negotiations; Message drafts; Strategy simulator |
-| **Procurement** | $299 per month | Team seats; Custom walk-away rules; Savings reports |
+| **Procurement** | $299 per month | Everything in Shopper |
 | **API** | Custom (% of savings, contact sales) | Embed negotiation in your app; Pay only on savings |
+
+All plans unlock the same software in this release; higher tiers add licence scope and support, not gated features. There is no team-seat, custom-rule, or savings-report gating in the code — walk-away and savings outputs are per-negotiation inputs and results available on every plan. The API plan is contact-sales only, not a self-serve Stripe plan.
 
 To start a trial or buy a plan, [request access](https://github.com/eliem08/haggle-agent/issues/new?title=Haggle%20Agent%20trial&labels=sales).
 
