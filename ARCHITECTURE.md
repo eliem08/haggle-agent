@@ -39,7 +39,9 @@ Tit-for-tat mirrors the seller's last concession.
 - **A simulator and tournament ship with the engine.** Strategies are evaluated against seller
   populations before touching real money.
 
-## 5. Production architecture
+## 5. Future production architecture (not shipped)
+Not shipped in this release — the product ships the engine, simulator, and web API; the items
+below are roadmap (see README Roadmap), not production architecture:
 A negotiation session service (state per counterparty thread), channel adapters, an LLM message
 layer constrained to the engine's price, and a verifiability guard: leverage claims must reference
 stored evidence (competitor quote URL), otherwise they're blocked.
