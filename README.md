@@ -9,7 +9,7 @@
 
 **The problem:** Most prices are negotiable, but few people haggle, and the ones who do leave money on the table.
 
-**What you get:** Proven concession strategies, smart acceptance rules, persuasive messages and a simulator to test tactics against different sellers.
+**What you get:** Four textbook concession strategies (Boulware, conceder, linear, tit-for-tat), target and walk-away rules, draft messages and a simulator to test tactics against different sellers.
 
 ## Quickstart
 
