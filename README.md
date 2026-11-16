@@ -54,15 +54,18 @@ Buyers pick a plan on `/pricing`, pay on Stripe Checkout and see their API key o
 
 ## Pricing
 
-Every plan starts with a 14-day free trial. Prices in USD, billed monthly unless noted.
+Monthly plans start with a 14-day free trial. Prices in USD, billed monthly unless noted.
 
 | Plan | Price | Includes |
 |---|---|---|
-| **Shopper** | $9 per month | Unlimited negotiations; Message drafts; Strategy simulator |
-| **Procurement** | $299 per month | Team seats; Custom walk-away rules; Savings reports |
-| **API** | Custom (% of savings, contact sales) | Embed negotiation in your app; Pay only on savings |
+| **Shopper** | $9 per month | Unlimited simulations; Four negotiation strategies; Strategy tournament |
+| **Procurement** | $299 per month | Team seats; Target and walk-away rules; Hosted API |
+| **API** | Custom (% of savings, contact sales) | Embed the strategy engine in your app; Pay only on savings |
 
 To start a trial or buy a plan, [request access](https://github.com/eliem08/haggle-agent/issues/new?title=Haggle%20Agent%20trial&labels=sales).
+
+Plan note: every plan runs the same software, and every API key unlocks all of it. Seat, agent and volume
+limits are licence terms; the code does not enforce them. Support, SLA and done-for-you items are services.
 
 ## Licence
 
