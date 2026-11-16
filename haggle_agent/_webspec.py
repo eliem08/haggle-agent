@@ -142,4 +142,24 @@ SPEC = {
             "id": "tournament",
         },
     ],
+    "plans": [
+        {
+            "key": "shopper",
+            "name": "Shopper",
+            "price": "$9 per month",
+            "features": ["Unlimited simulations", "Four negotiation strategies", "Strategy tournament"],
+        },
+        {
+            "key": "procurement",
+            "name": "Procurement",
+            "price": "$299 per month",
+            "features": ["Team seats", "Target and walk-away rules", "Hosted API"],
+        },
+        {
+            "key": "api",
+            "name": "API",
+            "price": "% of savings, contact sales",
+            "features": ["Embed the strategy engine in your app", "Pay only on savings"],
+        },
+    ],
 }
